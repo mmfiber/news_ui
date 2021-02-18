@@ -1,15 +1,6 @@
 version: 2
  
 jobs:
-  # build ジョブ: CircleCI 上で Docker コンテナを作成してテストする
-  build:
-    docker:
-      - image: alpine
-    steps:
-      - checkout
-      - run:
-        name: Echo Test
-        command: echo "CircleCI Test"
   # deploy ジョブ: EC2 に SSH 接続して、デプロイを実行する
   deploy:
     machine:
@@ -27,7 +18,6 @@ workflows:
     build_and_deploy:
         # build ジョブと deploy ジョブを呼び出す
         jobs:
-            - build
             - deploy:
                 requires:
                     # deploy ジョブより先に build ジョブを実行しろ、という命令
@@ -35,4 +25,4 @@ workflows:
                 # master ブランチに push された場合のみ deploy ジョブを実行する
                 filters:
                     branches:
-                        only: master
+                        only: main
