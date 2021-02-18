@@ -19,9 +19,6 @@ workflows:
         # build ジョブと deploy ジョブを呼び出す
         jobs:
             - deploy:
-                requires:
-                    # deploy ジョブより先に build ジョブを実行しろ、という命令
-                    - build
                 # master ブランチに push された場合のみ deploy ジョブを実行する
                 filters:
                     branches:
