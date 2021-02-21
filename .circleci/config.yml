@@ -10,7 +10,7 @@ jobs:
       # CircleCI に登録した秘密鍵を呼び出す
       - add_ssh_keys:
       # CircleCI に登録した環境変数を使って SSH
-      - run: ssh ${USER_NAME}@${HOST_NAME} 'cd /usr/local/src/news_ui && git pull'
+      - run: ssh -v ${USER_NAME}@${HOST_NAME} 'cd /usr/local/src/news_ui && git pull'
  
 workflows:
     version: 2
