@@ -2,7 +2,7 @@
 ssh -t -v ${USER_NAME}@${HOST_NAME} << 'EOS'
 cd ~/news_ui
 sudo git pull
-sudo npm i
-sudo run build
-sudo npm start
+npm i
+npm run build
+npm start
 EOS
