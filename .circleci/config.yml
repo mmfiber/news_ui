@@ -18,7 +18,7 @@ jobs:
             - run:
                 name: Pull code  
                 command: |
-                    ssh -v ${USER_NAME}@${HOST_NAME} 'cd ~/usr/local/src/news_ui && git pull'
+                    ssh -v ${USER_NAME}@${HOST_NAME} 'cd ~/news_ui && sudo git pull'
  
 workflows:
     version: 2
