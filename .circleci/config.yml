@@ -10,7 +10,7 @@ jobs:
             # CircleCI に登録した秘密鍵を呼び出す
             - add_ssh_keys:
                 fingerprints:
-                    - "f4:fa:3d:cb:e1:56:1c:bc:41:bf:4e:c8:f7:d7:b1:8a"
+                    - ${FINGERPRINT}
             - run:  
                 name: Start ssh-keyscan  
                 command: |
