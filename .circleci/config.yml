@@ -1,33 +1,44 @@
-version: 2
+version: 2.1
  
+defaults: &defaults
+    
+
 jobs:
-    # deploy ジョブ: EC2 に SSH 接続して、デプロイを実行する
     deploy:
         machine:
             image: circleci/classic:edge
+
         steps:
             - checkout
-            # CircleCI に登録した秘密鍵を呼び出す
+
+            - restore_cache:
+                keys:
+                - v1-dependencies-{{ checksum "package.json" }}
+
             - add_ssh_keys:
                 fingerprints:
                     - ${FINGERPRINT}
-            - run:  
-                name: Start ssh-keyscan  
+
+            - run:
+                name: ssh-keyscan  
                 command: |
                     ssh-keyscan -p ${SSH_PORT} ${HOST_NAME} >> ~/.ssh/known_hosts 
+
             - run:
-                name: Pull code  
+                name: set up and serve 
                 command: |
-                    ssh -v ${USER_NAME}@${HOST_NAME} 'cd ~/news_ui && sudo git pull'
+                    bash ./setup.sh
+
+            - save_cache:
+                paths:
+                    - node_modules
+                key: v1-dependencies-{{ checksum "package.json" }}
  
 workflows:
     version: 2
-    # build_and_deploy ジョブ: 一番最初に呼ばれるジョブ
     build_and_deploy:
-        # build ジョブと deploy ジョブを呼び出す
         jobs:
             - deploy:
-                # master ブランチに push された場合のみ deploy ジョブを実行する
                 filters:
                     branches:
                         only: main
