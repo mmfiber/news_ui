@@ -1,5 +1,5 @@
 #!/bin/bash
-ssh -tv ${USER_NAME}@${HOST_NAME} << EOS
+ssh -t -v ${USER_NAME}@${HOST_NAME} << EOS
 sudo cd /home/${USER_NAME}/news_ui
 sudo ls -a
 sudo git pull
