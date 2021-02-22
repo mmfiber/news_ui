@@ -4,5 +4,4 @@ cd ~/news_ui
 sudo git pull
 sudo npm i
 sudo npm run build
-sudo node server.js
 EOS

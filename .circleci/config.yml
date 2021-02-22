@@ -25,7 +25,7 @@ jobs:
                     ssh-keyscan -p ${SSH_PORT} ${HOST_NAME} >> ~/.ssh/known_hosts 
 
             - run:
-                name: set up and serve 
+                name: set up and build 
                 command: |
                     bash ./setup.sh
 
