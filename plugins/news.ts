@@ -6,9 +6,9 @@ const BASE_URL = "https://newsapi.org/v2"
 
 export default class News {
   private country: string
-  private apikey : string
+  private apikey: string
 
-  constructor(apikey:string , country="jp") {
+  constructor(apikey: string, country = "jp") {
     this.apikey = apikey
     this.country = country
   }
@@ -37,4 +37,3 @@ export default class News {
     return await axios.get(`${endpoint}?${query}`)
   }
 }
-

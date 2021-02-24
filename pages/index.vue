@@ -6,19 +6,19 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator'
+import { Vue, Component } from "vue-property-decorator"
 import NewsCard from "@/components/NewsCard.vue"
 import News from "@/plugins/news"
 
-
-@Component({components: {NewsCard}})
-export default class NewsList extends Vue{
+@Component({ components: { NewsCard } })
+export default class NewsList extends Vue {
   private news = new News(this.$config.newsApiKey)
   private articles: any = {}
 
   async mounted() {
-    await this.news.getTopHeadlines()
-    .then((res: any) => this.articles = res.data.articles)
+    await this.news
+      .getTopHeadlines()
+      .then((res: any) => (this.articles = res.data.articles))
   }
 }
 </script>

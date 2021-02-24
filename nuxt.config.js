@@ -1,24 +1,24 @@
-import colors from 'vuetify/es5/util/colors'
-import dotenv from 'dotenv'
+import colors from "vuetify/es5/util/colors"
+import dotenv from "dotenv"
 dotenv.config()
 
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - news_ui',
-    title: 'news_ui',
+    titleTemplate: "%s - news_ui",
+    title: "news_ui",
     htmlAttrs: {
-      lang: 'en',
+      lang: "en",
     },
     meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
+      { charset: "utf-8" },
+      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { hid: "description", name: "description", content: "" },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
   },
   publicRuntimeConfig: {
-    newsApiKey: process.env.NEWS_API_KEY
+    newsApiKey: process.env.NEWS_API_KEY,
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -33,10 +33,10 @@ export default {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     // https://go.nuxtjs.dev/typescript
-    '@nuxt/typescript-build',
+    "@nuxt/typescript-build",
     // https://go.nuxtjs.dev/vuetify
-    '@nuxtjs/vuetify',
-    '@nuxtjs/axios'
+    "@nuxtjs/vuetify",
+    "@nuxtjs/axios",
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -44,7 +44,7 @@ export default {
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
-    customVariables: ['~/assets/variables.scss'],
+    customVariables: ["~/assets/variables.scss"],
     theme: {
       dark: true,
       themes: {
@@ -63,10 +63,10 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-  //   extend (config, { isDev, isClient }) {
-  //     config.node = {
-  //          fs: "empty"
-  //      }
-  //  }
+    //   extend (config, { isDev, isClient }) {
+    //     config.node = {
+    //          fs: "empty"
+    //      }
+    //  }
   },
 }

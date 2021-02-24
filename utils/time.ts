@@ -5,6 +5,6 @@ export const msToTime = (ms: number) => {
   return {
     hour,
     min: min - hour * 60,
-    sec: sec - min * 60
+    sec: sec - min * 60,
   }
 }

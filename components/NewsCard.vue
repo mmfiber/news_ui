@@ -14,41 +14,43 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator'
+import { Vue, Component, Prop } from "vue-property-decorator"
 import { Article } from "@/model/type"
 import { msToTime } from "@/utils/time"
 
 @Component({})
 export default class NewsCard extends Vue {
-  @Prop({type: Object})
+  @Prop({ type: Object })
   private article!: Article
 
-  get to(){
+  get to() {
     return this.article.url
   }
 
-  get title(){
+  get title() {
     return this.article.title
   }
 
-  get abstract(){
-    if(!this.article.description) return ""
+  get abstract() {
+    if (!this.article.description) return ""
     const max = 100
-    return this.article.description.length <= max 
+    return this.article.description.length <= max
       ? this.article.description
       : this.article.description.slice(0, max) + "..."
   }
 
   get imgSrc() {
-    return this.article.urlToImage || "https://h238net.com/wp-content/plugins/ninja-forms/assets/img/no-image-available-icon-6.jpg"
+    return (
+      this.article.urlToImage ||
+      "https://h238net.com/wp-content/plugins/ninja-forms/assets/img/no-image-available-icon-6.jpg"
+    )
   }
 
   get publishedAt() {
-    if(!this.article.publishedAt) return ""
+    if (!this.article.publishedAt) return ""
     const now = new Date().getTime()
     const publishedAt = new Date(this.article.publishedAt).getTime()
     const time = msToTime(now - publishedAt)
-    console.log(publishedAt)
     return time.hour ? `${time.hour}時間前` : `${time.min}分前`
   }
 }
