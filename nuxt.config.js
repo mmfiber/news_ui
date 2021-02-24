@@ -1,4 +1,6 @@
 import colors from 'vuetify/es5/util/colors'
+import dotenv from 'dotenv'
+dotenv.config()
 
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -14,6 +16,9 @@ export default {
       { hid: 'description', name: 'description', content: '' },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+  },
+  publicRuntimeConfig: {
+    newsApiKey: process.env.NEWS_API_KEY
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -31,6 +36,7 @@ export default {
     '@nuxt/typescript-build',
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
+    '@nuxtjs/axios'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -56,5 +62,11 @@ export default {
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+  //   extend (config, { isDev, isClient }) {
+  //     config.node = {
+  //          fs: "empty"
+  //      }
+  //  }
+  },
 }
